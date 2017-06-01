@@ -12,6 +12,7 @@ package toto
 class List {
     String name
     String description
+    String owner
 
     Date dateCreated
     Date lastUpdated
@@ -25,6 +26,7 @@ class List {
       dateCreated nullable:true
       lastUpdated nullable:true
       tasks nullable:true
+      owner blank:true, nullable:true, display:false
     }
 
     String toString(_) {
