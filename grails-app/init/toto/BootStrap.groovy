@@ -2,16 +2,20 @@ package auth.toto
 
 class BootStrap {
 
+    def springSecurityService
+
     def init = {
+        // Roles Defined
         def adminRole = new Role(authority: 'ROLE_ADMIN').save(flush:true)
         def userRole = new Role(authority: 'ROLE_USER').save(flush:true)
 
-        def admin = new User(username:"admin", password:"admin", enabled:true).save(flush:true)
-        //Give admin both admin and user role
+        // Admin User
+        def admin = new User(username:"admin", password:"admin", email:"admin@mattgaines.net", enabled:true).save(flush:true, failOnError:true)
         UserRole.create(admin, adminRole).save()
         UserRole.create(admin, userRole).save()
 
-        def user = new User(username:"user", password:"user", enabled:true).save(flush:true)
+        // Regular User
+        def user = new User(username:"user", password:"user", email: "user@mattgaines.net", enabled:true).save(flush:true, failOnError:true)
         UserRole.create(user, userRole).save()
     }
     def destroy = {
