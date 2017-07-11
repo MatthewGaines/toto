@@ -11,6 +11,7 @@ package toto
 class Task {
   String name
   String description
+  String owner
 
   //Handled automatically by Grails, hidden from editing.
   Date dateCreated
@@ -25,6 +26,8 @@ class Task {
     dateCreated nullable:true
     lastUpdated nullable:true
     list nullablle:false //must belong to a list
+    owner blank:true, nullable:true, display:false
+
   }
 
   String toString() {
